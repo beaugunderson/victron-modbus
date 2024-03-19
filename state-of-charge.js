@@ -2,6 +2,7 @@
 
 const Modbus = require('@glanglois/jsmodbus');
 const net = require('net');
+const path = require('path');
 const { promisify } = require('util');
 
 const exec = promisify(require('child_process').exec);
@@ -106,9 +107,11 @@ function spacer(count) {
 
 const SEPARATOR = '·';
 
+const SSID_SCRIPT = path.resolve(__dirname, 'ssid.sh');
+
 (async function main() {
   try {
-    const ssid = (await exec('./ssid.sh')).stdout.trim();
+    const ssid = (await exec(SSID_SCRIPT)).stdout.trim();
 
     if (ssid !== 'Funkentelechy' && ssid !== 'Panspermia') {
       console.log('');
