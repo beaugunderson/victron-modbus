@@ -1,4 +1,4 @@
-#!/Users/beau/.nvm/versions/node/v22.5.1/bin/node
+#!/Users/beau/.volta/bin/volta run node --node=v22.5.1
 
 const Modbus = require('@glanglois/jsmodbus');
 const net = require('net');
@@ -113,7 +113,7 @@ const SSID_SCRIPT = path.resolve(__dirname, 'ssid.sh');
   try {
     const ssid = (await exec(SSID_SCRIPT)).stdout.trim();
 
-    if (ssid !== 'Funkentelechy' && ssid !== 'Panspermia' && !ssid.startsWith('Winegard')) {
+    if (ssid !== 'Placebo Syndrome' && ssid !== 'Funkentelechy' && ssid !== 'Panspermia' && !ssid.startsWith('Winegard')) {
       console.log('');
       process.exit(0);
     }
