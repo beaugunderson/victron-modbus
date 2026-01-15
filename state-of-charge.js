@@ -113,7 +113,7 @@ const SSID_SCRIPT = path.resolve(__dirname, 'ssid.sh');
   try {
     const ssid = (await exec(SSID_SCRIPT)).stdout.trim();
 
-    if (ssid !== 'Placebo Syndrome' && ssid !== 'Funkentelechy' && ssid !== 'Panspermia' && !ssid.startsWith('Winegard')) {
+    if (ssid !== 'Placebo Syndrome' && ssid !== 'Funkentelechy' && ssid !== 'Panspermia' && !ssid.startsWith('Winegard') && ssid !== 'Abiogenesis') {
       console.log('');
       process.exit(0);
     }
