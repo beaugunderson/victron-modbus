@@ -5,7 +5,7 @@ const net = require('net');
 const path = require('path');
 const { promisify } = require('util');
 
-const exec = promisify(require('child_process').exec);
+const execFile = promisify(require('child_process').execFile);
 
 // const BATTERY_ITEMS = [
 //   ['battery voltage', 259, 100],
@@ -107,13 +107,20 @@ function spacer(count) {
 
 const SEPARATOR = '·';
 
-const SSID_SCRIPT = path.resolve(__dirname, 'ssid.sh');
+// A signed helper that holds the Location Services grant macOS requires before
+// it will report the SSID. See ssid/README.md.
+const SSID_BIN = path.resolve(__dirname, 'ssid/ssid.app/Contents/MacOS/ssid');
 
 (async function main() {
   try {
-    const ssid = (await exec(SSID_SCRIPT)).stdout.trim();
+    const ssid = (await execFile(SSID_BIN)).stdout.trim();
 
-    if (ssid !== 'Placebo Syndrome' && ssid !== 'Funkentelechy' && ssid !== 'Panspermia' && !ssid.startsWith('Winegard') && ssid !== 'Abiogenesis') {
+    if (ssid !== 'Placebo Syndrome' &&
+        ssid !== 'Funkentelechy' &&
+        ssid !== 'Panspermia' &&
+        ssid !== 'Abiogenesis' &&
+        ssid !== 'Sir Nose' &&
+        !ssid.startsWith('Winegard')) {
       console.log('');
       process.exit(0);
     }
