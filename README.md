@@ -16,3 +16,9 @@ since it cannot tell whether you are on a network with the Victron. See
 
 Symlink `state-of-charge.js` into your SwiftBar plugin directory as
 `003-state-of-charge.30s.js`.
+
+## Tests
+
+`yarn test` runs the register decoding and menu bar formatting tests. Register
+types and scale factors come from Victron's
+[CCGX Modbus TCP register list](https://www.victronenergy.com/upload/documents/CCGX-Modbus-TCP-register-list-3.73.xlsx).
